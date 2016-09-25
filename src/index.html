@@ -9,8 +9,11 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZvzFDp3PM4QW8AOD33bE9mL_iPuSTW_g"></script>
 <script src="assets/app.js"></script>
 
+<video style="display: none" id="cameraVideo" width="640" height="480" autoplay></video>
+
 <a-scene vr-mode-ui="enabled: false">
     <a-assets>
+        <!--<video id="cameraVideo" width="640" height="480" autoplay></video>-->
         <a-asset-item id="pikachu-obj" src="3dmodels/DolPikachuR1.obj"></a-asset-item>
         <a-asset-item id="pikachu-mtl" src="3dmodels/DolPikachuR1.mtl"></a-asset-item>
     </a-assets>
@@ -39,6 +42,10 @@
                              easing="ease-out"></a-animation>
             </a-plane>
         </a-entity>
+    </a-entity>
+
+    <a-entity position="0 -22 -45">
+        <a-video id="displayVideo" width="48" height="64" src="#cameraVideo"></a-video>
     </a-entity>
 
     <a-sky color="#24CAFF" radius="1000"></a-sky>
