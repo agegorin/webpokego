@@ -11,8 +11,8 @@
 
 <a-scene vr-mode-ui="enabled: false">
     <a-assets>
-        <a-asset-item id="pikachu-obj" src="/3dmodels/PIKACHU.obj"></a-asset-item>
-        <a-asset-item id="pikachu-mtl" src="/3dmodels/PIKACHU.mtl"></a-asset-item>
+        <a-asset-item id="pikachu-obj" src="3dmodels/DolPikachuR1.obj"></a-asset-item>
+        <a-asset-item id="pikachu-mtl" src="3dmodels/DolPikachuR1.mtl"></a-asset-item>
     </a-assets>
 
     <!-- Quasi-isometric camera -->
@@ -25,7 +25,11 @@
         </a-entity>
     </a-entity>
 
-    <a-entity obj-model="obj: #pikachu-obj; mtl: #pikachu-mtl"></a-entity>
+    <a-entity>
+        <a-animation attribute="rotation" dur="10000" fill="forwards"
+                     to="0 360 0" repeat="indefinite"></a-animation>
+        <a-entity obj-model="obj: #pikachu-obj; mtl: #pikachu-mtl"></a-entity>
+    </a-entity>
 
     <a-entity id="map" rotation="0 45 0">
         <!-- Base -->

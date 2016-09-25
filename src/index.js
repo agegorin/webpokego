@@ -1,7 +1,7 @@
 import 'aframe';
 import { getLocationMap, handleGeolocationQuery } from './js/getmap';
 
-document.addEventListener('load', () => {
+window.addEventListener('load', () => {
     var plane = document.querySelector('#plane');
     getLocationMap().then(function (image) {
         plane.setAttribute('src', image);
