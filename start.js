@@ -10,6 +10,7 @@ webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
 
 const frontendCompiler = webpack(webpackConfig);
 const frontendServerHost = '192.168.1.242';
+const https = true;
 
 const frontendServer = new WebpackDevServer(frontendCompiler, {
     contentBase: webpackConfig.output.path,
@@ -27,9 +28,9 @@ const frontendServer = new WebpackDevServer(frontendCompiler, {
     },
     headers: { 'X-Custom-Header': 'yes' },
     stats: { colors: true },
-    https: true
+    https
 });
 
 frontendServer.listen(frontendServerPort, frontendServerHost, () => {
-    console.log(`Frontend server running at http://localhost:${frontendServerPort}...`);
+    console.log(`Frontend server running at http${https?'s':''}://${frontendServerHost}:${frontendServerPort}...`);
 });

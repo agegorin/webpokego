@@ -3,6 +3,7 @@ var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CompressionPlugin = require('compression-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const IS_PRODUCTION = (process.env.NODE_ENV === 'production');
 const ASSETS_PATH = './assets/';
@@ -77,7 +78,13 @@ const webpackConfig = {
             title: 'My App',
             inject: 'body',
             template: 'src/index.html'
-        })
+        }),
+        new CopyWebpackPlugin([
+            {
+                from: 'src/3dmodels',
+                to: '3dmodels'
+            }
+        ])
     ]
 };
 

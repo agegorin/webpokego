@@ -1,3 +1,10 @@
-/**
- * Created by Egor on 25.09.2016.
- */
+import 'aframe';
+import { getLocationMap, handleGeolocationQuery } from './js/getmap';
+
+document.addEventListener('load', () => {
+    var plane = document.querySelector('#plane');
+    getLocationMap().then(function (image) {
+        plane.setAttribute('src', image);
+        plane.removeAttribute('color');
+    });
+});
