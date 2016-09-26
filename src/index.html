@@ -13,40 +13,36 @@
 
 <a-scene vr-mode-ui="enabled: false">
     <a-assets>
-        <!--<video id="cameraVideo" width="640" height="480" autoplay></video>-->
         <a-asset-item id="pikachu-obj" src="3dmodels/DolPikachuR1.obj"></a-asset-item>
         <a-asset-item id="pikachu-mtl" src="3dmodels/DolPikachuR1.mtl"></a-asset-item>
     </a-assets>
 
     <!-- Quasi-isometric camera -->
-    <a-entity>
-        <a-animation attribute="position" from="0 5 0" to="0 0 0" dur="4000"
-                     easing="ease-out"></a-animation>
+    <a-entity id="cameraAndVideo">
         <a-entity position="0 880 1290" rotation="-34 0 0">
             <a-camera id="camera" near="1000" far="4000" fov="2.2" user-height="0"
                       wasd-controls-enabled="false" look-controls-enabled="false"></a-camera>
         </a-entity>
-    </a-entity>
 
-    <a-entity>
-        <a-animation attribute="rotation" dur="10000" fill="forwards"
-                     to="0 360 0" repeat="indefinite"></a-animation>
-        <a-entity obj-model="obj: #pikachu-obj; mtl: #pikachu-mtl"></a-entity>
-    </a-entity>
-
-    <a-entity id="map" rotation="0 45 0">
-        <!-- Base -->
-        <a-entity>
-            <a-plane id="plane" width="30" height="30" color="#249889" rotation="-90 0 0">
-                <a-animation attribute="position" from="0 -40 0" to="0 0 0" dur="1600"
-                             easing="ease-out"></a-animation>
-            </a-plane>
+        <a-entity position="0 -22 -45">
+            <a-video id="displayVideo" width="48" height="64" src="#cameraVideo" visible="false"></a-video>
         </a-entity>
     </a-entity>
 
-    <a-entity position="0 -22 -45">
-        <a-video id="displayVideo" width="48" height="64" src="#cameraVideo"></a-video>
+    <a-entity id="pokemon" position="0 0 0">
+        <a-animation id="pokemonAnimation" attribute="rotation" dur="10000" fill="forwards"
+                     to="0 360 0" repeat="indefinite"></a-animation>
+        <a-entity obj-model="obj: #pikachu-obj; mtl: #pikachu-mtl"></a-entity>
+        <a-plane width="10" height="10" color="#249889" side="double" position="0 5 0"></a-plane>
     </a-entity>
+
+    <a-entity id="map" rotation="0 45 0">
+        <a-plane id="plane" width="30" height="30" src="#staticMap" rotation="-90 0 0">
+            <a-animation attribute="position" from="0 -40 0" to="0 0 0" dur="1600"
+                         easing="ease-out"></a-animation>
+        </a-plane>
+    </a-entity>
+
 
     <a-sky color="#24CAFF" radius="1000"></a-sky>
     <a-light type="directional" color="#FFF" intensity="0.45" position="4 2 1"></a-light>

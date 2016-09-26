@@ -24,11 +24,14 @@ function handleErrors(error){
     }
 }
 
-export function handleGeolocationQuery(position){
-    var size = 512;
-
-    var google_tile = 'http://maps.google.com/maps/api/staticmap?center=' + position.coords.latitude + ',' +
+function getMapQuery(position, size){
+    return 'https://maps.google.com/maps/api/staticmap?center=' + position.coords.latitude + ',' +
         position.coords.longitude + '&zoom=14&size=' + size + 'x' + size;
+}
+
+function handleGeolocationQuery(position){
+    var size = 512;
+    var google_tile = getMapQuery(position, size);
 
     var canvas = document.createElement('canvas');
     canvas.width = canvas.height = size;
