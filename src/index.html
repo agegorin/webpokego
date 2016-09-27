@@ -17,17 +17,25 @@
         <a-asset-item id="pikachu-mtl" src="3dmodels/DolPikachuR1.mtl"></a-asset-item>
     </a-assets>
 
-    <!-- Quasi-isometric camera -->
-    <a-entity id="cameraAndVideo">
-        <a-entity position="0 880 1290" rotation="-34 0 0">
-            <a-camera id="camera" near="1000" far="4000" fov="2.2" user-height="0"
-                      wasd-controls-enabled="false" look-controls-enabled="false"></a-camera>
-        </a-entity>
-
-        <a-entity position="0 -22 -45">
-            <a-video id="displayVideo" width="48" height="64" src="#cameraVideo" visible="false"></a-video>
+    <a-entity>
+        <a-entity id="cameraAndVideo" position="0 40 150" rotation="-10 0 0">
+            <a-camera id="secondCamera" near="100" far="400" fov="20" user-height="0"
+                      wasd-controls-enabled="false" look-controls-enabled="false" active="false">
+            </a-camera>
+            <a-entity position="0 0 -160">
+                <a-video id="displayVideo" width="48" height="64" src="#cameraVideo" visible="false"></a-video>
+            </a-entity>
         </a-entity>
     </a-entity>
+
+    <!-- Quasi-isometric camera -->
+    <a-entity>
+        <a-entity position="0 880 1290" rotation="-34 0 0">
+            <a-camera id="camera" near="1000" far="4000" fov="2.2" user-height="0"
+                      wasd-controls-enabled="false" look-controls-enabled="false" active="true"></a-camera>
+        </a-entity>
+    </a-entity>
+
 
     <a-entity id="pokemon" position="0 0 0">
         <a-animation id="pokemonAnimation" attribute="rotation" dur="10000" fill="forwards"
@@ -44,7 +52,7 @@
     </a-entity>
 
 
-    <a-sky color="#24CAFF" radius="1000"></a-sky>
+    <a-sky color="#24CAFF" radius="2000"></a-sky>
     <a-light type="directional" color="#FFF" intensity="0.45" position="4 2 1"></a-light>
     <a-light type="ambient" color="#A8A8A8"></a-light>
 
