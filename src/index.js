@@ -25,7 +25,6 @@ window.addEventListener('load', () => {
     // mode === 'catch';
     function changeModeToCatch () {
         cameraAndVideo.setAttribute('look-controls','');
-        // camera.setAttribute('active','false');
         secondCamera.setAttribute('active','true');
         displayVideoEl.setAttribute('visible', 'true');
         mapPlane.setAttribute('visible', 'false');
